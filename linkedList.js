@@ -8,6 +8,8 @@ let module ={};
 let listHead = null;
 let listTail = null;
 let nodeIndex = 0;
+let selectedNode;
+
 
   module.getHead = function(){
     return listHead;
@@ -35,13 +37,23 @@ let nodeIndex = 0;
   };
 
   module.remove = function(b){
-
-
+    if(module.get(b) !== false) {
+      if(b > 0){
+        module.get(b - 1).next = module.get(b).next;
+      } else {
+        listHead = listHead.next;
+      }
+      listTail = module.get(nodeIndex - 1);
+      nodeIndex --;
+    } else {
+      return false;
+    }
+    console.log(listHead);
   };
 
   module.get = function(n){
     let foundNode = false;
-    let selectedNode = listHead;
+    selectedNode = listHead;
       if( n > nodeIndex){
         selectedNode = false;
       } else {
@@ -54,7 +66,6 @@ let nodeIndex = 0;
         }
       }
     foundNode = selectedNode;
-    console.log(foundNode);
     return foundNode;
   };
 
