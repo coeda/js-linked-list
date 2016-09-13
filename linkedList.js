@@ -4,32 +4,51 @@
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
 function linkedListGenerator(){
-var linkedList ={};
+var module ={};
+var listHead = null;
+var listTail = null;
 
-linkedList.getHead = function(){
-
-};
-
-linkedList.getTail = function(){
-
-};
-
-linkedList.add = function(){
+module.getHead = function(){
+  return listHead;
 
 };
 
-linkedList.remove = function(){
+module.getTail = function(){
+  return listTail;
+};
+
+module.add = function(a){
+  var addedNodeVariable = {
+    value: a,
+    next: null
+  };
+  if (listHead === null){
+    listHead = a;
+  }
+    listTail = a;
+
+  return addedNodeVariable;
 
 };
 
-linkedList.get = function(){
+module.remove = function(b){
+  var listRemove = module.get(b);
 
 };
 
-linkedList.insert = function(){
+module.get = function(n){
+  for(let node in listData){
+    if(node.value === n ){
+      return node;
+    }
+  }
 
 };
 
-return linkedList;
+module.insert = function(){
+
+};
+
+return module;
 
 }
