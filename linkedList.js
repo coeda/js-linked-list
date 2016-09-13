@@ -48,16 +48,15 @@ let selectedNode;
     } else {
       return false;
     }
-    console.log(listHead);
   };
 
   module.get = function(n){
     let foundNode = false;
     selectedNode = listHead;
-      if( n > nodeIndex){
+      if( n > nodeIndex || n < 0){
         selectedNode = false;
       } else {
-        for(i = 0; i <= n; i++){
+        for(let i = 0; i <= n; i++){
           if(i === n){
             foundNode = selectedNode;
           } else if(foundNode.next !== null) {
@@ -69,7 +68,21 @@ let selectedNode;
     return foundNode;
   };
 
-  module.insert = function(){
+  module.insert = function(v,input){
+    if(module.get(input) !== false){
+      let newNode = {
+        value: v,
+        next: module.get(input)
+      };
+      if(input > 0){
+      module.get(input - 1).next = newNode;
+      } else {
+        listHead = newNode;
+      }
+      nodeIndex ++;
+    } else {
+      return false;
+    }
   };
 
   return module;
